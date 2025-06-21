@@ -24,38 +24,47 @@ public class CategoryController:Controller
     [HttpPost]
     public IActionResult Create(Category obj)
     {
-        // if (obj.Name == obj.DisplayOrder.ToString())
-        // {
-        //     ModelState.AddModelError("name", "Name cannot be same as the Display Order");
-        // }
-        //
-        // if (obj.Name.ToLower() == "test")
-        // {
-        //     ModelState.AddModelError("", "Test is an invalid value");
-        // }
-        // {
-        //     ModelState.AddModelError("name", "Name cannot be same as the Display Order");
-        // }
         if (ModelState.IsValid)
         {
             _dbContext.Categories.Add(obj);
             _dbContext.SaveChanges();
+            TempData["success"]= "Category created successfully";
             return RedirectToAction("Index","Category");
         }
         return View();
     }
 
-    public IActionResult Edit(int id)
+    public IActionResult Edit(int? id)
     {
-        var objCategory = _dbContext.Categories.Find(id);
-        return View(objCategory);
+        if (id == null || id == 0)
+        {
+            return NotFound();
+        }
+        var categoryFromDb = _dbContext.Categories.Find(id);
+        if (categoryFromDb == null)
+        {
+            return NotFound();
+        }
+        return View(categoryFromDb);
     }
-
+    [HttpPost]
+    public IActionResult Edit(Category obj)
+    {
+        if (ModelState.IsValid)
+        {
+            _dbContext.Categories.Update(obj);
+            _dbContext.SaveChanges();
+            TempData["success"]= "Category updated successfully";
+            return RedirectToAction("Index","Category");
+        }
+        return View();
+    }
     public IActionResult Delete(int id)
     {
         var objCategory = _dbContext.Categories.Find(id);
         _dbContext.Categories.Remove(objCategory);
         _dbContext.SaveChanges();
+        TempData["success"]= "Category deleted successfully";
         return RedirectToAction("Index","Category");
     }
 }

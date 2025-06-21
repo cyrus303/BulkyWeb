@@ -309,3 +309,4 @@
 /Users/sachinmahesh/Developer/RiderProjects/Bulky/BulkyWeb/bin/Debug/net9.0/zh-Hans/Microsoft.CodeAnalysis.Scripting.resources.dll
 /Users/sachinmahesh/Developer/RiderProjects/Bulky/BulkyWeb/bin/Debug/net9.0/zh-Hant/Microsoft.CodeAnalysis.Scripting.resources.dll
 /Users/sachinmahesh/Developer/RiderProjects/Bulky/BulkyWeb/obj/Debug/net9.0/compressed/bcan9r7e7h-mxnhoc7ssm.gz
+/Users/sachinmahesh/Developer/RiderProjects/Bulky/BulkyWeb/obj/Debug/net9.0/BulkyWeb.sourcelink.json
